@@ -27,6 +27,9 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 
 
 
+
+
+
 # Colaboradores
 
 * Carlos Andree Avalos Soto 201408580
