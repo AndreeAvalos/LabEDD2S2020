@@ -21,10 +21,12 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 * Cola
 * Lista Simplemente Enlazada
 * Lista Doblemente Enlazada
+* Ordenamiento Burbuja
+* Busquedas 
 
 # Colaboradores
 
-* Carlos Andree Avalos Soto
+* Carlos Andree Avalos Soto 201408580
 
 # Referencias
 
