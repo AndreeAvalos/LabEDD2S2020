@@ -23,6 +23,7 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 * Lista Doblemente Enlazada
 * Ordenamiento Burbuja
 * Busquedas 
+* Templates
 
 # Colaboradores
 
