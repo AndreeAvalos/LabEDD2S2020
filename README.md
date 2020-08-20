@@ -24,6 +24,7 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 * Ordenamiento Burbuja
 * Busquedas 
 * Templates
+* Matriz Dispersa
 
 # Colaboradores
 
