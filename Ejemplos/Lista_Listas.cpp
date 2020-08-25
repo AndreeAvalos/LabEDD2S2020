@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -123,6 +124,59 @@ struct lista_listas{
             aux = aux->siguiente;
         }
     }
+    void graficar(){
+        ofstream file;
+        file.open("./list_of_list.dot");
+        file << "digraph{\n";
+        //recorremos la lista global para crear nodos
+        nodoL *vertical = raiz;
+        int contador = 0;
+        while(vertical!=nullptr){
+            file << "\""<< vertical->nombre.c_str()<<"\"[shape=box,rankdir=UD, style =\"filled\"; label=\""<< vertical->nombre.c_str()<<"\";pos=\"0,-"<< to_string(contador)<<"!\"" << "]\n";
+            //Recorremos la lista interna de la lista global para crear nodos
+            nodo *horizontal = vertical->lst->raiz;
+            int contador2 = 0;
+            while(horizontal!=nullptr){
+                 file << "\""<< horizontal->name.c_str()<<"\"[shape=box,rankdir=LR ,style =\"filled\"; label=\""<< horizontal->name.c_str()<<"\";pos=\""<< to_string(contador2)<<",-"<<to_string(contador)<<"!\""<<"]\n";
+                 contador2++;
+                 horizontal = horizontal->siguiente;
+            }
+            contador++;
+            vertical = vertical->siguiente;
+        }
+        //Enlazar nodos verticales
+        vertical = raiz;
+        while(vertical!=nullptr){
+            if(vertical==raiz){
+                file << "\""<<vertical->nombre.c_str()<<"\"";
+            }else{
+                file << "->\""<<vertical->nombre.c_str()<<"\"";
+            }
+            vertical = vertical->siguiente;
+        }
+        file <<"\n";
+        //enlazamos nodos horizontales
+        vertical = raiz;
+        while(vertical!=nullptr){
+            nodo *horizontal = vertical->lst->raiz;
+            if(horizontal!=nullptr){
+                file << "\""<<vertical->nombre.c_str()<<"\"->\""<<horizontal->name.c_str()<<"\"\n";
+                while(horizontal!=nullptr){
+                    if(horizontal==vertical->lst->raiz){
+                        file<<"\""<<horizontal->name.c_str()<<"\"";
+                    }else{
+                        file<<"->\""<<horizontal->name.c_str()<<"\"";
+                    }
+                    horizontal = horizontal->siguiente;
+                }
+            }
+            file <<"\n";
+            vertical = vertical->siguiente;
+        }
+        file << "}\n";
+        file.close();
+        system("dot -Tpng ./list_of_list.dot -o ./list_of_list.png");
+    }
 };
 
 int main()
@@ -146,7 +200,13 @@ int main()
     lst->add("Avion 1", "Juan");
     lst->add("Avion 2", "Marlon");
     lst->add("Avion 2", "Antonio");
+    lst->add("Avion 3", "Everest");
+    lst->add("Avion 3", "Sergio");
+    lst->add("Avion 3", "Miguel");
+    lst->add("Avion 3", "Sara");
+    lst->add("Avion 3", "Maria");
     lst->print();
+    lst->graficar();
 
 
     return 0;
