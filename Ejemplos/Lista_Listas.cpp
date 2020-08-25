@@ -175,7 +175,7 @@ struct lista_listas{
         }
         file << "}\n";
         file.close();
-        system("dot -Tpng ./list_of_list.dot -o ./list_of_list.png");
+        system("fdp -Tpng ./list_of_list.dot -o ./list_of_list.png");
     }
 };
 
