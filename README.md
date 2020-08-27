@@ -26,6 +26,7 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 * Templates
 * Matriz Dispersa
 * Grafica de Lista de Listas
+* Arbol Binario de Busqueda
 
 # Colaboradores
 
