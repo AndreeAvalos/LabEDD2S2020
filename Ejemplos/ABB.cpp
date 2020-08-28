@@ -54,16 +54,16 @@ class ABB{
         }
         void in(nodo *padre){
             if(padre!=nullptr){
-                pre(padre->izq);
+                in(padre->izq);
                 cout<< padre->indice<< " ";
-                pre(padre->der);
+                in(padre->der);
             }
             return;
         }
         void post(nodo *padre){
             if(padre!=nullptr){
-                pre(padre->izq);
-                pre(padre->der);
+                post(padre->izq);
+                post(padre->der);
                 cout<< padre->indice<< " ";
             }
             return;
