@@ -35,3 +35,11 @@
 *.dot
 *.png
 *.jpg
+
+Clase11/build
+Clase11/dist
+Clase11/nbproject
+Clase11/test
+*.xml
+*.mf
+Clase11/bloque/*.txt

@@ -28,6 +28,10 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 * Grafica de Lista de Listas
 * Arbol Binario de Busqueda
 * Arbol AVL
+* Tabla Hash
+* Blockchain
+* Hilos
+* Patron Singleton
 
 # Colaboradores
 
