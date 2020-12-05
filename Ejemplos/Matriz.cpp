@@ -189,7 +189,7 @@ private:
             header_x = aux->headerX();
             //comparamos si la cabecera actual es mayor al indice que queremos agregar
             //si es mayor entonces solo seguimos pasando
-            if( header_x > x){
+            if( header_x < x){
                 aux = aux->derecha;
             }else{
                 //lo vamos a insertar si el dato esta entre nodos 
@@ -226,7 +226,7 @@ private:
         while (aux!=nullptr)
         {
             int header_y = aux->headerY();
-            if( header_y > y){
+            if( header_y < y){
                 aux = aux->abajo;
             }
             else{
@@ -265,7 +265,7 @@ private:
         while (aux!=nullptr)
         {
             int header_y = aux->headerY();
-            if( header_y > y){
+            if( header_y < y){
                 aux = aux->abajo;
             }
             else{
@@ -292,7 +292,7 @@ private:
         while (aux!=nullptr)
         {
             int header_y = aux->headerX();
-            if( header_y > x){
+            if( header_y < x){
                 aux = aux->derecha;
             }else{
                 nuevo->derecha = aux;
