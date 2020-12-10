@@ -30,11 +30,21 @@ class Hash:
         while(factor < 0.3):
             factor = self.elementos/siguiente
             siguiente +=1
+            
+        temporal = self.vector
 
-        for i in range(self.tamano, siguiente):
-            self.vector.append(None)
-        
+        for i in range(siguiente):
+            temporal.append(None)
+
         self.tamano = siguiente
+
+        for i in self.vector:
+            posicion = self.funcion_hash(toASCII(i.valor))
+            i.indice = posicion
+            temporal[posicion] = i
+
+        self.vector = temporal
+        
 
     def funcion_hash(self, id):
         
