@@ -43,24 +43,26 @@ class Hash:
             factor = self.elementos/siguiente
             siguiente +=1
 
-        temporal = self.vector
-
+        temporal = []
+        self.elementos = 0
+        
         for i in range(siguiente):
             temporal.append(None)
 
-        self.tamano = siguiente
-
-        for i in self.vector:
-            posicion = self.funcion_hash(toASCII(i.valor))
-            i.indice = posicion
-            temporal[posicion] = i
+        aux_vector = self.vector
 
         self.vector = temporal
-        
         self.tamano = siguiente
 
+        print("Nuevo tamano", siguiente, "Tamano:", len(temporal))
+        for i in aux_vector:
+            if i:
+                for j in i.lista:
+                    self.insertar(toASCII(j.clave), j.clave, j.valor)
+
+
     def funcion_hash(self, id):
-        posicion = id % self.tamano
+        posicion = id % (self.tamano-1)
         if posicion > self.tamano:
             return posicion - self.tamano
         return posicion
@@ -82,10 +84,6 @@ def toASCII(cadena):
     for char in cadena:
         result += ord(char)
     return result
-
-
-print(toASCII("casa"))
-print(toASCII("saca"))
 
 
 tabla = Hash()
