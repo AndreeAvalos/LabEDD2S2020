@@ -8,6 +8,17 @@ class Tabla:
 
     def alterAddPK(self, lst):
         self.pks = lst
+        if len(self.diccionario)!=0:
+            temp = self.diccionario
+            self.diccionario = {}
+            for key in temp:
+                self.insertar(temp[key])
+
+            
+    
+    def alterDropPK(self):
+        self.pks = []
+
 
     def search(self, pks):
         indice = ""
@@ -50,14 +61,19 @@ class Tabla:
 
 
 t1 = Tabla("tabla 1")
-t1.alterAddPK([0])
-t1.insertar(["uno","Andree",2020])
-t1.insertar(["dos","Carlos", 2021])
+
+t1.insertar(["uno","Andree","2020"])
+
+t1.insertar(["uno","Carlos", "2021"])
+t1.insertar(["uno","Carlos", "2022"])
+t1.insertar(["uno","Carlos", "2023"])
+t1.insertar(["uno","Carlos", "2024"])
+
+t1.alterAddPK([1,2])
+
+
 t1.print()
 print("Resultados de busquedas")
-
-print(t1.search(["dos"]))
-print(t1.search(["tres"]))
 
 
 
