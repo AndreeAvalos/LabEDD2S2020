@@ -32,6 +32,9 @@ Descipcion: Ejemplos e informacion varia dada en laboratorio.
 * Blockchain
 * Hilos
 * Patron Singleton
+* Blockchain
+* Generacion de hash con nonce para Blockchain
+* Lectura y Escritura de Archivos Binarios
 
 # Colaboradores
 
