@@ -9,10 +9,10 @@ import(
 	"net/http"
 )
 type Tienda struct {
-	Nombre string
-	Descripcion string
-	Contacto string
-	Calificacion int
+	Nombre string `json: "Nombre, omitempty"`
+	Descripcion string `json: "Descripcion, omitempty"`
+	Contacto string `json: "Contacto, omitempty"`
+	Calificacion int `json: "Calificacion, omitempty"`
 }
 type Departamento struct {
 	Nombre string
@@ -32,12 +32,25 @@ func main() {
 	request()
 }
 
+type Lst_Tiendas struct {
+	Tiendas []Tienda
+}
+
+
 func homePage(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w,"Servidor en Go")
 }
 
 func getArreglo(w http.ResponseWriter, r *http.Request)  {
-	fmt.Fprintf(w, "[1,2,3,4]")
+	var lst_tiendas []Tienda
+	
+	lst_tiendas = append(lst_tiendas, Tienda{"Tienda1", "Esta es una tienda", "aavalosoto@gmail.com", 5})
+	lst_tiendas = append(lst_tiendas, Tienda{"Tienda2", "Esta es una tienda", "aavalosoto@gmail.com", 5})
+	lst_tiendas = append(lst_tiendas, Tienda{"Tienda3", "Esta es una tienda", "aavalosoto@gmail.com", 5})
+	lst_tiendas = append(lst_tiendas, Tienda{"Tienda4", "Esta es una tienda", "aavalosoto@gmail.com", 5})
+	lst_tiendas = append(lst_tiendas, Tienda{"Tienda5", "Esta es una tienda", "aavalosoto@gmail.com", 5})
+	json1, _ := json.Marshal(lst_tiendas)
+	fmt.Fprintf(w, string(json1))
 }
 
 func metodopost(w http.ResponseWriter, r *http.Request){
