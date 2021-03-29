@@ -27,7 +27,6 @@ type matriz struct {
 }
 
 
-
 func nodoMatriz(x int, y int, producto *Product) *nodo {
 	return &nodo{x,y,producto, nil,nil,nil,nil,0,nil,nil}
 }
@@ -134,14 +133,168 @@ func (m *matriz)noExisten(producto *Product, x int, y int) {
 }
 
 func (m *matriz) existeVertical(producto *Product, x int, y int) {
-	
+	m.lst_h.insert(x)
+	h := m.lst_h.search(x)
+	v := m.lst_v.search(y)
+
+	nuevo := nodoMatriz(x,y,producto)
+	agregado := false
+
+	aux := v.derecha
+
+	var cabecera int
+
+	for aux != nil {
+		cabecera = aux.headerX()
+		if cabecera <x {
+			aux = aux.derecha
+		}else{
+			nuevo.derecha = aux
+			nuevo.izquierda =aux.izquierda
+			aux.izquierda.derecha = nuevo
+			aux.izquierda = nuevo
+			agregado = true
+			break
+		}
+	}
+	if agregado == false {
+		aux = v.derecha
+		for aux.derecha != nil{
+			aux = aux.derecha
+		}
+		nuevo.izquierda = aux
+		aux.derecha = nuevo
+	}
+
+	nuevo.arriba = h
+	h.abajo = nuevo
 }
 
 func (m *matriz) existeHorizontal(producto *Product, x int, y int) {
-	
+	m.lst_v.insert(y)
+	h := m.lst_h.search(x)
+	v := m.lst_v.search(y)
+
+	nuevo := nodoMatriz(x,y,producto)
+	agregado := false
+
+	aux := h.abajo
+
+	var cabecera int
+
+	for aux != nil {
+		cabecera = aux.headerY()
+		if cabecera <y {
+			aux = aux.abajo
+		}else{
+			nuevo.abajo = aux
+			nuevo.arriba =aux.arriba
+			aux.arriba.abajo = nuevo
+			aux.arriba = nuevo
+			agregado = true
+			break
+		}
+	}
+	if agregado == false {
+		aux = h.abajo
+		for aux.abajo != nil{
+			aux = aux.abajo
+		}
+		nuevo.arriba = aux
+		aux.abajo = nuevo
+	}
+
+	nuevo.izquierda = v
+	v.derecha = nuevo
 }
 
 func (m *matriz) existen(producto *Product, x int, y int) {
-	
+
+	h := m.lst_h.search(x)
+	v := m.lst_v.search(y)
+
+	nuevo := nodoMatriz(x,y,producto)
+	agregado := false
+
+	aux := v.derecha
+	var cabecera int
+
+	for aux != nil {
+		cabecera = aux.headerX()
+		if cabecera <x {
+			aux = aux.derecha
+		}else{
+			nuevo.derecha = aux
+			nuevo.izquierda =aux.izquierda
+			aux.izquierda.derecha = nuevo
+			aux.izquierda = nuevo
+			agregado = true
+			break
+		}
+	}
+	if agregado == false {
+		aux = v.derecha
+		for aux.derecha != nil{
+			aux = aux.derecha
+		}
+		nuevo.izquierda = aux
+		aux.derecha = nuevo
+	}
+
+
+	agregado = false
+
+	aux = h.abajo
+
+	for aux != nil {
+		cabecera = aux.headerY()
+		if cabecera <y {
+			aux = aux.abajo
+		}else{
+			nuevo.abajo = aux
+			nuevo.arriba =aux.arriba
+			aux.arriba.abajo = nuevo
+			aux.arriba = nuevo
+			agregado = true
+			break
+		}
+	}
+	if agregado == false {
+		aux = h.abajo
+		for aux.abajo != nil{
+			aux = aux.abajo
+		}
+		nuevo.arriba = aux
+		aux.abajo = nuevo
+	}
+}
+
+func (n *nodo) print(){
+	fmt.Println("x:", n.x, "y:", n.y)
+}
+
+func (m *matriz) Print_vertical()  {
+	cabecera := m.lst_v.first
+	for cabecera != nil{
+		aux := cabecera.derecha
+		for aux != nil {
+			aux.print()
+			aux = aux.derecha
+		}
+		cabecera = cabecera.siguiente
+	}
+}
+
+
+func (m *matriz) Print_horizontal()  {
+	cabera := m.lst_h.first
+	for cabera != nil{
+		aux := cabera.abajo
+		for aux != nil{
+			aux.print()
+			aux = aux.abajo
+		}
+		cabera = cabera.siguiente
+	}
 }
 
