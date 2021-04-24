@@ -1,9 +1,20 @@
 package main
 
 import (
-	"./avl"
+	"./tablahash"
 	"fmt"
+	"math/rand"
+	"sync"
+	"time"
 )
+
+var wg sync.WaitGroup
+
+func escribir(numero int) {
+	defer wg.Done()
+	time.Sleep(time.Duration(rand.Intn(100)))
+	fmt.Println("Su peticion es la numero:", numero)
+}
 
 func main() {
 	//ll := listadelistas.NewLL()
@@ -65,15 +76,52 @@ func main() {
 	//
 	//fase1.All(4,0,0)
 
-	miavl := avl.NewAVL()
-	miavl.Insertar(1)
-	miavl.Insertar(11)
-	miavl.Insertar(12)
-	miavl.Insertar(13)
-	miavl.Insertar(14)
-	miavl.Insertar(15)
-	miavl.Insertar(16)
-	miavl.Insertar(17)
-	fmt.Println("Valores de AVL")
-	miavl.Print()
+	//miavl := avl.NewAVL()
+	//miavl.Insertar(1)
+	//miavl.Insertar(11)
+	//miavl.Insertar(12)
+	//miavl.Insertar(13)
+	//miavl.Insertar(14)
+	//miavl.Insertar(15)
+	//miavl.Insertar(16)
+	//miavl.Insertar(17)
+	//fmt.Println("Valores de AVL")
+	//miavl.Print()
+	//var dec1, asig1 interfaces.Instruccion
+	//
+	//dec1 = interfaces.NewDeclaracion("a","10")
+	//asig1 = interfaces.NewAsignacion("b", "20")
+	//
+	//lst_instrucciones := []interfaces.Instruccion{dec1, asig1}
+	//
+	//for _, inst := range lst_instrucciones {
+	//	inst.Ejecutar()
+	//}
+	//for i := 0; i < 100; i++ {
+	//	wg.Add(1)
+	//	go escribir(i)
+	//}
+	//wg.Wait()
+	//fmt.Println("TERMINO")
+	ht := tablahash.NewHashTable(17)
+	valor := stringtoascii("prueba")
+	valor2 := stringtoascii("abeurp")
+	ht.Insertar(int(valor), "prueba","Primera inserccion")
+	ht.Insertar(int(valor2), "abeurp","COLISION")
+	ht.Insertar(int(stringtoascii("Carlos")),"Carlos","No debera de haber colision")
+	ht.Insertar(int(stringtoascii("Andree1")),"Andree1","No debera de haber colision 1")
+	ht.Insertar(int(stringtoascii("Andree2")),"Andree2","No debera de haber colision 2")
+	ht.Insertar(int(stringtoascii("4")),"4","No debera de haber colision 6")
+	ht.GetAtributos()
+	ht.Print()
+}
+
+func stringtoascii(entrada string) int32 {
+	cod := []rune(entrada)
+	var temp int32
+	temp = 0
+	for i := 0; i < len(cod); i++ {
+		temp = cod[i] + temp
+	}
+	return temp
 }
