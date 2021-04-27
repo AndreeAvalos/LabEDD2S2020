@@ -55,7 +55,7 @@ func (ht *HashTable) rehashing() {
 
 	//Siguiente tama;o adecuado para cumplir con el factor de utilizacion minimo
 	for factor < 0.3 {
-		factor = float64(ht.elementos / siguente)
+		factor = float64(ht.elementos) / float64(siguente)
 		siguente++
 	}
 
@@ -85,7 +85,7 @@ func (ht *HashTable) Insertar(id int, clave string, valor string) {
 		nuevo.lista = append(nuevo.lista, *NewTupla(clave, valor))
 		ht.vector[posicion] = nuevo
 		ht.elementos++
-		ht.factorCarga = float64(ht.elementos / ht.size)
+		ht.factorCarga = float64(ht.elementos) / float64(ht.size)
 	}
 	if ht.factorCarga > 0.6 {
 		//hacer rehashing
