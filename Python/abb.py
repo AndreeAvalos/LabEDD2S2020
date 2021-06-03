@@ -1,7 +1,8 @@
 class nodo:
     def __init__(self, val):
         self.valor = val
-        self.izq = self.der = None
+        self.izq = None
+        self.der = None
 
 class abb:
     def __init__(self):
