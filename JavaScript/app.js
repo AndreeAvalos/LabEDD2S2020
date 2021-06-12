@@ -116,37 +116,52 @@
 // console.log("----------------------");
 // matriz.imprimir_vertical();
 
-var AVL = require('./structure/avl');
+// var AVL = require('./structure/avl');
+//
+// var avl = new AVL();
+//
+// avl.insertar(1);
+// avl.insertar(2);
+// avl.insertar(3);
+// avl.insertar(4);
+// avl.insertar(5);
+// avl.insertar(6);
+// avl.insertar(7);
+// avl.insertar(8);
+// avl.insertar(9);
+// avl.insertar(10);
+// avl.insertar(11);
+// avl.preOrden();
+//
+// console.log("---ABB----");
+// var ABB = require('./structure/abb');
+//
+// var abb = new ABB();
+//
+// abb.insertar(1);
+// abb.insertar(2);
+// abb.insertar(3);
+// abb.insertar(4);
+// abb.insertar(5);
+// abb.insertar(6);
+// abb.insertar(7);
+// abb.insertar(8);
+// abb.insertar(9);
+// abb.insertar(10);
+// abb.insertar(11);
+// abb.preOrden();
 
-var avl = new AVL();
+const arbolB = require('./structure/arbolb')
+let b = new arbolB(5);
 
-avl.insertar(1);
-avl.insertar(2);
-avl.insertar(3);
-avl.insertar(4);
-avl.insertar(5);
-avl.insertar(6);
-avl.insertar(7);
-avl.insertar(8);
-avl.insertar(9);
-avl.insertar(10);
-avl.insertar(11);
-avl.preOrden();
+b.insertar(10);
+b.insertar(11);
+b.insertar(12);
+b.insertar(13);
+b.insertar(14);
+b.insertar(15);
+b.insertar(16);
+b.insertar(17);
 
-console.log("---ABB----");
-var ABB = require('./structure/abb');
+b.print();
 
-var abb = new ABB();
-
-abb.insertar(1);
-abb.insertar(2);
-abb.insertar(3);
-abb.insertar(4);
-abb.insertar(5);
-abb.insertar(6);
-abb.insertar(7);
-abb.insertar(8);
-abb.insertar(9);
-abb.insertar(10);
-abb.insertar(11);
-abb.preOrden();
